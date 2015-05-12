@@ -203,7 +203,7 @@ public class FragmentData extends Fragment implements OnClickListener {
 	public void saveData() {
 		String cityName = valLocation.getText().toString();
 		mainActivity.setCity(cityName);
-		int numDays = SPINER_VALS[spinnerDay.getSelectedItemPosition()];
+		int numDays =spinnerDay.getSelectedItemPosition();
 		mainActivity.setNumDays(numDays);
 
 	}
