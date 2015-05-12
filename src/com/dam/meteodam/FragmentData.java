@@ -1,27 +1,25 @@
 package com.dam.meteodam;
 
-import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.JSONStringer;
 
+import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.Dialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.app.PendingIntent;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.location.Criteria;
-import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
@@ -33,15 +31,13 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 public class FragmentData extends Fragment implements OnClickListener {
 	static LocationManager locationMng;
-	private static DecimalFormat decFrmt = new DecimalFormat("#.##");
 	private static SimpleDateFormat datFrmt = new SimpleDateFormat(
-			"yyyy/MM/dd HH:mm");
+			"yyyy/MM/dd HH:mm", Locale.US);
 	static TextView valLocation;
 	static Spinner spinnerDay;
 	Button sendBtn;
@@ -65,7 +61,7 @@ public class FragmentData extends Fragment implements OnClickListener {
 	private static AlarmManager alarmManager;
 	private static Button alarmOkBtn, alarmCancelBtn, alarmClsBtn;
 	private static JSONResourceReader jsonRsrcReader;
-	private static final int LOCATION_UPDATE_DISTANCE = 5;
+	// private static final int LOCATION_UPDATE_DISTANCE = 5;
 
 	private static AlarmReceiver receiver;
 	private static LocationUpdateReceiver locationReceiver;
@@ -105,8 +101,6 @@ public class FragmentData extends Fragment implements OnClickListener {
 		spinnerDay.setSelection(pos);
 		showUpdateDate();
 		jsonRsrcReader = new JSONResourceReader(mainActivity, this, BASE_URL);
-		ArrayList<String> forecast = null;
-
 		fragmentForecast = new FragmentForecast();
 		fragmentForecast.setParent(this);
 		FragmentManager fragmentManager = getFragmentManager();
@@ -128,7 +122,7 @@ public class FragmentData extends Fragment implements OnClickListener {
 
 	private void initLocationTracker() {
 		locationMng = (LocationManager) mainActivity
-				.getSystemService(mainActivity.LOCATION_SERVICE);
+				.getSystemService(Context.LOCATION_SERVICE);
 		Criteria criteria = new Criteria();
 		criteria.setAccuracy(Criteria.ACCURACY_COARSE);
 		criteria.setPowerRequirement(Criteria.POWER_LOW);
@@ -203,7 +197,7 @@ public class FragmentData extends Fragment implements OnClickListener {
 	public void saveData() {
 		String cityName = valLocation.getText().toString();
 		mainActivity.setCity(cityName);
-		int numDays =spinnerDay.getSelectedItemPosition();
+		int numDays = spinnerDay.getSelectedItemPosition();
 		mainActivity.setNumDays(numDays);
 
 	}
@@ -215,18 +209,24 @@ public class FragmentData extends Fragment implements OnClickListener {
 		super.onDetach();
 	}
 
+	private void initJSONReader() {
+		if (jsonRsrcReader != null) {
+			String cityName = valLocation.getText().toString();
+			int numDays = SPINER_VALS[spinnerDay.getSelectedItemPosition()];
+			Log.i("TRACE", "City name: " + cityName + ", Num. days: " + numDays);
+
+			jsonRsrcReader.setCity(cityName);
+			jsonRsrcReader.setNumDays(numDays);
+		}
+
+	}
+
 	@Override
 	public void onClick(View v) {
 		int id = v.getId();
-
 		switch (id) {
 		case R.id.btnSend:
-			String cityName = valLocation.getText().toString();
-			mainActivity.setCity(cityName);
-			int numDays = SPINER_VALS[spinnerDay.getSelectedItemPosition()];
-			jsonRsrcReader.setCity(cityName);
-			jsonRsrcReader.setNumDays(numDays);
-			Log.i("TRACE", "City name: " + cityName + ", Num. days: " + numDays);
+			initJSONReader();
 			getWeaherInf();
 			break;
 
@@ -259,6 +259,7 @@ public class FragmentData extends Fragment implements OnClickListener {
 					.getSystemService(Context.ALARM_SERVICE);
 			int alarmType = AlarmManager.RTC_WAKEUP;
 			Intent intent1 = new Intent(ALARM_ACTION);
+			initJSONReader();
 			alarmIntent = PendingIntent.getBroadcast(mainActivity, 0, intent1,
 					0);
 			alarmTime = Integer.parseInt(inAlarmTime.getText().toString());

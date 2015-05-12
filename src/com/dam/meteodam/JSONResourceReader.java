@@ -118,14 +118,15 @@ public class JSONResourceReader {
 						if (jsonArray != null && jsonArray.length() > 0) {
 							for (int i = 0; i < jsonArray.length(); i++) {
 								JSONObject obj = (JSONObject) jsonArray.get(i);
+								if (obj == null)
+									break;
 								long time = obj.getLong("dt");
 								Calendar cal = Calendar
 										.getInstance(Locale.ENGLISH);
 								cal.setTimeInMillis(time * 1000);
 								String dateStr = DateFormat.format(DATE_FORMAT,
 										cal).toString();
-								if (obj == null)
-									break;
+							
 								JSONArray weatherArr = obj
 										.getJSONArray("weather");
 
