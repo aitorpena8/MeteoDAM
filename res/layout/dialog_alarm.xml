@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <EditText
+        android:id="@+id/inAlarmTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="72dp"
+        android:ems="2"
+        android:inputType="number" 
+        android:text="5">
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/btnAlarmOk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btnAlarmCancel"
+        android:layout_alignBottom="@+id/btnAlarmCancel"
+        android:layout_marginRight="28dp"
+        android:layout_toLeftOf="@+id/inAlarmTime"
+        android:text="@string/okBtn" />
+
+    <Button
+        android:id="@+id/btnAlarmCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/inAlarmTime"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="67dp"
+        android:text="@string/cancelBtn" />
+
+    <Button
+        android:id="@+id/btnAlarmCls"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btnAlarmCancel"
+        android:layout_alignBottom="@+id/btnAlarmCancel"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="23dp"
+        android:text="@string/clsBtn" />
+
+    <TextView
+        android:id="@+id/lblMin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/inAlarmTime"
+        android:layout_alignBottom="@+id/inAlarmTime"
+        android:layout_alignLeft="@+id/btnAlarmCls"
+        android:text="@string/lbl_min" />
+
+</RelativeLayout>

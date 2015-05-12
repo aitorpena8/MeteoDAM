@@ -1,0 +1,130 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.dam.meteodam.DetailsActvity" >
+
+   
+    
+      
+    <TextView
+        android:id="@+id/lblDayAvg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/lbl_day_avg" />
+
+    <TextView
+        android:id="@+id/valDayAvg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/lblDayMax"
+        android:layout_alignTop="@+id/lblDayAvg"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@+id/lblDayAvg" />
+
+    <TextView
+        android:id="@+id/lblDayMax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/lblDayAvg"
+        android:layout_below="@id/lblDayAvg"
+        android:layout_marginTop="20dp"
+        android:text="@string/lbl_day_max" />
+
+    <TextView
+        android:id="@+id/valDayMax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/lblDayMax"
+        android:layout_marginLeft="20dp"
+       
+        android:layout_toRightOf="@id/lblDayMax" />
+
+    <TextView
+        android:id="@+id/lblDayMin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/lblDayAvg"
+        android:layout_below="@+id/valDayMax"
+        android:layout_marginTop="20dp"
+        android:text="@string/lbl_day_min" />
+
+    <TextView
+        android:id="@+id/valDayMin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/lblDayMin"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/lblDayMin" />
+    
+    
+        <TextView
+        android:id="@+id/lblHumid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/lblDayAvg"
+        android:layout_below="@+id/valDayMin"
+        android:layout_marginTop="20dp"
+        android:text="@string/lbl_humid" />
+
+    <TextView
+        android:id="@+id/valHumid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/lblHumid"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/lblHumid" />
+    
+    
+        
+            <TextView
+        android:id="@+id/lblPress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/lblDayAvg"
+        android:layout_below="@+id/lblHumid"
+        android:layout_marginTop="20dp"
+        android:text="@string/lbl_press" />
+
+    <TextView
+        android:id="@+id/valPress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/lblPress"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/lblPress" />
+    
+    
+            <TextView
+        android:id="@+id/lblWind"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/lblDayAvg"
+        android:layout_below="@+id/lblPress"
+        android:layout_marginTop="20dp"
+        android:text="@string/lbl_wind" />
+
+    <TextView
+        android:id="@+id/valWind"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/lblWind"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/lblWind" />
+
+    <TextView
+        android:id="@+id/valDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/lblDayAvg"
+        android:layout_alignParentTop="true"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+</RelativeLayout>

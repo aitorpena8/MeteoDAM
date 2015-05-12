@@ -1,0 +1,103 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dataFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.dam.meteodam.MainActivity" >
+
+    <LinearLayout
+        android:id="@+id/ubicacionLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/lblLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lbl_location" />
+
+        <EditText
+            android:id="@+id/valLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/dayLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ubicacionLayout"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/lblLDia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lbl_day" />
+
+        <Spinner
+            android:id="@+id/valDay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnSend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dayLayout"
+        android:layout_centerHorizontal="true"
+        android:text="@string/btn_send" />
+
+    <FrameLayout
+        android:id="@+id/forecastFrame"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_below="@id/btnSend"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="#FFAAAAAA" >
+    </FrameLayout>
+
+<!--     <Button
+        android:id="@+id/btnDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/forecastFrame"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:enabled="false"
+        android:text="@string/btn_details" />
+ -->
+    <ImageButton
+        android:id="@+id/btnSync"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/dayLayout"
+        android:layout_below="@+id/dayLayout"
+        android:src="@android:drawable/ic_popup_sync" />
+
+    <TextView
+        android:id="@+id/updTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/forecastFrame"
+        android:layout_centerHorizontal="true" />
+
+    <ImageButton
+        android:id="@+id/btnGPS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dayLayout"
+        android:layout_toRightOf="@+id/btnSend"
+        android:src="@android:drawable/ic_menu_mylocation" />
+
+</RelativeLayout>
